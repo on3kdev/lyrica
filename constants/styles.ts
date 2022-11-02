@@ -36,20 +36,4 @@ export const standardStyles = StyleSheet.create({
     marginLeft: "auto",
     marginRight: "auto",
   },
-  inputField: {
-    backgroundColor: colors.white,
-    width: "100%",
-    borderRadius: 100,
-    paddingHorizontal: 20,
-    paddingVertical: 15,
-    flex: 0,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  input: {
-    fontSize: 18,
-    color: colors.textGrey,
-    width: "88%",
-  },
 });

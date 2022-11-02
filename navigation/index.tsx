@@ -1,11 +1,11 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import React, { FC } from "react";
+import React from "react";
 import { RootStackParamList } from "../constants/types";
-import { Home } from "../screens/Home";
-import { Lyrics } from "../screens/Lyrics";
+import Home from "../screens/Home";
+import Lyrics from "../screens/Lyrics";
 
-export const Navigation: FC = () => {
+export const Navigation = () => {
   const Stack = createStackNavigator<RootStackParamList>();
 
   return (

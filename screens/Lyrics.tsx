@@ -26,7 +26,7 @@ const getURL = (isArtist: boolean) => {
     : `${baseURL}/getlyricsfromtitle`;
 };
 
-export const Lyrics = ({ route, navigation }: Props) => {
+const Lyrics = ({ route, navigation }: Props) => {
   const { title, artist }: Song = route.params.song;
   const [data, setData] = useState<LyricsType>();
   const [error, setError] = useState<string>();
@@ -51,19 +51,12 @@ export const Lyrics = ({ route, navigation }: Props) => {
         }
       );
 
-      if (!dataJSON.ok) {
-        setError("General Error!");
-        console.log(dataJSON.statusText);
-        setLoading(false);
-        return;
-      }
-
       const data = await dataJSON.json();
 
       if (!data.success) {
-        setError(data.message);
+        setError(data.errmsg ?? data.message);
         setLoading(false);
-        console.log(data.message);
+        console.log(data.errmsg ?? data.message);
         return;
       }
 
@@ -96,7 +89,8 @@ export const Lyrics = ({ route, navigation }: Props) => {
             color={colors.lightGrey}
             style={styles.errorIcon}
           />
-          <Text style={styles.title}>{error}</Text>
+          <Text style={styles.title}>Ups, something went wrong!</Text>
+          <Text style={styles.lyricsText}>{error}</Text>
         </View>
       )}
       {data && (
@@ -124,6 +118,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    paddingHorizontal: 15,
   },
   backButton: {
     marginLeft: 25,
@@ -151,3 +146,5 @@ const styles = StyleSheet.create({
   },
   errorIcon: { marginBottom: 25 },
 });
+
+export default Lyrics;

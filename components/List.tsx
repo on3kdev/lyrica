@@ -31,30 +31,28 @@ const data = [
   },
 ];
 
-const List = ({ navigation }: Props) => {
-  return (
-    <View style={styles.list}>
-      <>
-        {data.map(({ title, artist, img }, key) => (
-          <TouchableOpacity
-            style={styles.item}
-            key={key}
-            onPress={() =>
-              navigation.push("Lyrics", {
-                song: { title, artist },
-              })
-            }
-            activeOpacity={0.7}
-          >
-            <Image source={img} style={styles.img} />
-            <Text style={[standardStyles.text, styles.title]}>{title}</Text>
-            <Text style={[standardStyles.text, styles.artist]}>{artist}</Text>
-          </TouchableOpacity>
-        ))}
-      </>
-    </View>
-  );
-};
+const List = ({ navigation }: Props) => (
+  <View style={styles.list}>
+    <>
+      {data.map(({ title, artist, img }, key) => (
+        <TouchableOpacity
+          style={styles.item}
+          key={key}
+          onPress={() =>
+            navigation.push("Lyrics", {
+              song: { title, artist },
+            })
+          }
+          activeOpacity={0.7}
+        >
+          <Image source={img} style={styles.img} />
+          <Text style={[standardStyles.text, styles.title]}>{title}</Text>
+          <Text style={[standardStyles.text, styles.artist]}>{artist}</Text>
+        </TouchableOpacity>
+      ))}
+    </>
+  </View>
+);
 
 const styles = StyleSheet.create({
   list: {

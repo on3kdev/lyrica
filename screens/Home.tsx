@@ -1,5 +1,5 @@
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import React, { FC, useState } from "react";
+import React, { useState } from "react";
 import { ScrollView, View } from "react-native";
 import List from "../components/List";
 import Logo from "../components/Logo";
@@ -11,8 +11,8 @@ interface Props {
   navigation: NativeStackNavigationProp<RootStackParamList, "Home">;
 }
 
-export const Home: FC<Props> = ({ navigation }) => {
-  const [searchValue, setSearchValue] = useState<string | undefined>();
+const Home = ({ navigation }: Props) => {
+  const [searchValue, setSearchValue] = useState<string>();
 
   return (
     <ScrollView style={standardStyles.container}>
@@ -28,3 +28,5 @@ export const Home: FC<Props> = ({ navigation }) => {
     </ScrollView>
   );
 };
+
+export default Home;
